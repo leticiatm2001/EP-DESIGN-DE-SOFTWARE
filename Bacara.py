@@ -5,16 +5,19 @@ import random
 from random import randint
 #PERGUNTA AO JOGADOR EM QUEM APOSTA E QUANTO APOSTA
 aposta = input('Qual a sua aposta? (Jogador/Banco/Empate):  ')
-if aposta=="Jogador" or aposta=="Banco" or aposta=="Empate":
-    print("Você realizou sua escolha")
-else:
-    print("Você ainda não fez a sua escolha")
+while True:
+    if aposta=="Jogador" or aposta=="Banco" or aposta=="Empate":
+        print("Você realizou sua escolha")
+        break
+    else:
+        print("Você ainda não fez a sua escolha")
     aposta = input('Qual a sua aposta? (Jogador/Banco/Empate):  ')  
 fichas = 100
 apostaficha = int(input('Quanto você quer apostar? Voce tem 100 fichas no momento:  '))
-if apostaficha > fichas or apostaficha <=0 :
-    print ('Me desculpe mas você não tem todas essas fichas ou o valor colocado não é valido')
-    apostaficha = int(input('Quanto você quer apostar? Voce tem 100 fichas no momento:  '))
+while True:
+    if apostaficha > fichas or apostaficha <=0 :
+        print ('Me desculpe mas você não tem todas essas fichas ou o valor colocado não é valido')
+        apostaficha = int(input('Quanto você quer apostar? Voce tem 100 fichas no momento:  '))
 
 
 #CARTAS 
@@ -40,3 +43,13 @@ carta1banco = cartas[c1b]
 c2b= random.randint(0, len(cartas)- carta1jogador-carta2jogador-carta1banco)
 carta2banco= cartas[c2b]
 somabanco= carta1banco + carta2banco
+
+#JOGO
+if somajogador >=10:
+    somajogador = somajogador-10
+if somabanco >=10:
+    somabanco = somabanco - 10
+
+#Mostrando a soma para o jogador
+print("A soma do jogador foi {0}".format(somajogador))
+print("A soma do banco foi {0}".format(somabanco))
