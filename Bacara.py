@@ -18,7 +18,8 @@ while True:
     if apostaficha > fichas or apostaficha <=0 :
         print ('Me desculpe mas você não tem todas essas fichas ou o valor colocado não é valido')
         apostaficha = int(input('Quanto você quer apostar? Voce tem 100 fichas no momento:  '))
-
+    else:
+        break
 
 #CARTAS 
 espada = [2,3,4,5,6,7,8,9,0,0,0,0,1]
@@ -44,12 +45,40 @@ c2b= random.randint(0, len(cartas)- carta1jogador-carta2jogador-carta1banco)
 carta2banco= cartas[c2b]
 somabanco= carta1banco + carta2banco
 
-#JOGO
+#Sorteando as cartas extras
+c3j =random.randint(0, len(cartas)- carta1jogador-carta2jogador-carta1banco- carta2banco)
+carta3jogador = cartas[c3j]
+c3b = random.randint(0, len(cartas)- carta1jogador-carta2jogador-carta1banco- carta2banco - carta3jogador)
+carta3banco = cartas[c3b]
+
+#Verificando soma
 if somajogador >=10:
     somajogador = somajogador-10
 if somabanco >=10:
     somabanco = somabanco - 10
 
+#Adição da terceira carta se necessário
+if somajogador!=9 and somajogador!=8:
+    somajogador += carta3jogador
+if somabanco!=9 and somabanco!=8:
+    somabanco += carta3banco    
+
+#Verificando a soma
+if somajogador >=10:
+    somajogador = somajogador-10
+if somabanco >=10:
+    somabanco = somabanco - 10       
+
 #Mostrando a soma para o jogador
 print("A soma do jogador foi {0}".format(somajogador))
 print("A soma do banco foi {0}".format(somabanco))
+
+if somabanco==8 and somajogador==8:
+    print("O jogo acabou e empatou")
+elif somabanco==9 and somajogador==9:
+    print("O jogo acabou e empatou")    
+elif somabanco==8 or somabanco==9:
+    print("O jogo acabou e o banco venceu")
+elif somajogador==8 or somajogador==9:
+    print("O jogo acabou e o Jogador venceu") 
+       
