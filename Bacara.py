@@ -19,7 +19,7 @@ while fichas > 0:
     while True:
         if apostaficha > fichas or apostaficha <=0 :
             print ('Me desculpe mas você não tem todas essas fichas ou o valor colocado não é valido')
-            apostaficha = int(input('Quanto você quer apostar? Voce tem 100 fichas no momento:  '))
+            apostaficha = int(input('Quanto você quer apostar? Voce tem {0} fichas no momento:  '.format(fichas)))
         else:
             break
 
@@ -34,23 +34,23 @@ while fichas > 0:
     random.shuffle(cartas)
 
 #Sorteando as cartas para o jogador
-    c1j = random.randint(0,len(cartas))
+    c1j = random.randint(0,len(cartas)- 1)
     carta1jogador = cartas[c1j]
-    c2j= random.randint(0, len(cartas)- carta1jogador)
+    c2j= random.randint(0, len(cartas)-1- carta1jogador)
     carta2jogador= cartas[c2j]
     somajogador= carta1jogador + carta2jogador
 
 #Sorteando as cartas para o Banco
-    c1b = random.randint(0,len(cartas)-carta1jogador-carta2jogador)
+    c1b = random.randint(0,len(cartas)-1-carta1jogador-carta2jogador)
     carta1banco = cartas[c1b]
-    c2b= random.randint(0, len(cartas)- carta1jogador-carta2jogador-carta1banco)
+    c2b= random.randint(0, len(cartas)-1- carta1jogador-carta2jogador-carta1banco)
     carta2banco= cartas[c2b]
     somabanco= carta1banco + carta2banco
 
 #Sorteando as cartas extras
-    c3j =random.randint(0, len(cartas)- carta1jogador-carta2jogador-carta1banco- carta2banco)
+    c3j =random.randint(0, len(cartas)-1- carta1jogador-carta2jogador-carta1banco- carta2banco)
     carta3jogador = cartas[c3j]
-    c3b = random.randint(0, len(cartas)- carta1jogador-carta2jogador-carta1banco- carta2banco - carta3jogador)
+    c3b = random.randint(0, len(cartas)-1- carta1jogador-carta2jogador-carta1banco- carta2banco - carta3jogador)
     carta3banco = cartas[c3b]
 
 #Verificando soma
@@ -77,7 +77,7 @@ while fichas > 0:
 
 #Empate
     if somabanco==8 and somajogador==8:
-        print("O jogo acabou e empatou")
+        print("A rodada acabou e empatou")
         if aposta=='Empate':
             apostaficha = 8* apostaficha
             fichas = fichas + apostaficha
@@ -87,7 +87,7 @@ while fichas > 0:
             print("Você perdeu e agora está com {0}".format(fichas))    
     
     elif somabanco==9 and somajogador==9:
-        print("O jogo acabou e empatou")
+        print("A rodada acabou e empatou")
         if aposta=='Empate':
             apostaficha = 8* apostaficha
             fichas = fichas + apostaficha
@@ -98,7 +98,7 @@ while fichas > 0:
 
 #Banco vence       
     elif somabanco==8 or somabanco==9 and somajogador!=8 and somajogador!=9:
-        print("O jogo acabou e o banco venceu")
+        print("A rodada acabou e o banco venceu")
         if aposta == 'Banco':
             apostaficha = apostaficha *0.95
             fichas = fichas + apostaficha
@@ -110,7 +110,7 @@ while fichas > 0:
 
 #Jogador vence
     elif somajogador==8 or somajogador==9 and somabanco!=8 and somabanco!=9:
-        print("O jogo acabou e o Jogador venceu")
+        print("A rodada acabou e o Jogador venceu")
         if aposta == 'Jogador':
             apostaficha=  apostaficha 
             fichas = fichas + apostaficha
@@ -120,7 +120,7 @@ while fichas > 0:
             print("Você perdeu e agora está com {0}".format(fichas))
     else:
         if somabanco > somajogador:
-            print("O jogo acabou e o banco venceu")
+            print("A rodada acabou e o banco venceu")
             if aposta == 'Banco':
                 apostaficha = apostaficha *0.95
                 fichas = fichas + apostaficha
@@ -139,12 +139,21 @@ while fichas > 0:
                 print("Você perdeu e agora está com {0}".format(fichas))
 
     if somabanco == somajogador:
-        print("O jogo acabou e empatou")
+        print("A rodada acabou e empatou")
         if aposta=='Empate':
             apostaficha = 8* apostaficha
-            a = fichas + apostaficha
-            print ("Voce acertou e agora está com {0}".format(a))
+            fichas = fichas + apostaficha
+            print ("Voce acertou e agora está com {0}".format(fichas))
         else:
-            b = fichas - apostaficha
-            print("Você perdeu e agora está com {0}".format(b)) 
-
+            fichas = fichas - apostaficha
+            print("Você perdeu e agora está com {0}".format(fichas)) 
+#Perguntar se ainda quer jogar (se tiver fichas)
+    if fichas > 0:
+        continuar = input("Deseja continuar jogando? (Sim/Nao). Você ainda possui {0} fichas:  ".format(fichas))
+        if continuar != "Sim":
+            print ("Acabou, Obrigada por jogar!")
+            break  
+        else:
+            True 
+    elif fichas == 0:
+        print ('Voce não possui mais fichas, Obrigada por Jogar!')
