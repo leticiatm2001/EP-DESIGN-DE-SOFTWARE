@@ -81,6 +81,7 @@ while fichas > 0:
             print("A rodada acabou e o banco venceu")
             if aposta == 'Banco':
                 apostaficha = apostaficha *0.95
+                apostaficha = int(apostaficha)
                 fichas = fichas + apostaficha
                 print ("Voce acertou e agora está com {0}".format(fichas))
             else:
