@@ -102,6 +102,7 @@ while fichas > 0:
         if aposta == 'Banco':
             apostaficha = apostaficha *0.95
             fichas = fichas + apostaficha
+            fichas = int
             print ("Voce acertou e agora está com {0}".format(fichas))
         else:
             fichas = fichas - apostaficha
@@ -150,7 +151,10 @@ while fichas > 0:
 #Perguntar se ainda quer jogar (se tiver fichas)
     if fichas > 0:
         continuar = input("Deseja continuar jogando? (Sim/Nao). Você ainda possui {0} fichas:  ".format(fichas))
-        if continuar != "Sim":
+        while continuar != "Sim" and continuar!="Nao":
+            print("Resposta invalida")
+            continuar = input("Deseja continuar jogando? (Sim/Nao). Você ainda possui {0} fichas:  ".format(fichas))
+        if continuar == "Nao":
             print ("Acabou, Obrigada por jogar!")
             break  
         else:
