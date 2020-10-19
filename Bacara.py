@@ -73,12 +73,69 @@ if somabanco >=10:
 print("A soma do jogador foi {0}".format(somajogador))
 print("A soma do banco foi {0}".format(somabanco))
 
+#Empate
 if somabanco==8 and somajogador==8:
     print("O jogo acabou e empatou")
+    if aposta=='Empate':
+        apostaficha = 9* apostaficha
+        a = fichas + apostaficha
+        print ("Voce acertou e agora está com {0}".format(a))
+    else:
+        b = fichas - apostaficha
+        print("Você perdeu e agora está com {0}".format(b))    
+    
 elif somabanco==9 and somajogador==9:
-    print("O jogo acabou e empatou")    
-elif somabanco==8 or somabanco==9:
+    print("O jogo acabou e empatou")
+    if aposta=='Empate':
+        apostaficha = 9* apostaficha
+        a = fichas + apostaficha
+        print ("Voce acertou e agora está com {0}".format(a))
+    else:
+        b = fichas - apostaficha
+        print("Você perdeu e agora está com {0}".format(b)) 
+
+#Banco vence       
+elif somabanco==8 or somabanco==9 and somajogador!=8 and somajogador!=9:
     print("O jogo acabou e o banco venceu")
-elif somajogador==8 or somajogador==9:
-    print("O jogo acabou e o Jogador venceu") 
+    if aposta == 'Banco':
+        apostaficha = apostaficha *1.95
+        a = fichas + apostaficha
+        print ("Voce acertou e agora está com {0}".format(a))
+    else:
+        b = fichas - apostaficha
+        print("Você perdeu e agora está com {0}".format(b))
+        
+
+#Jogador vence
+elif somajogador==8 or somajogador==9 and somabanco!=8 and somabanco!=9:
+    print("O jogo acabou e o Jogador venceu")
+    if aposta == 'Jogador':
+        apostaficha= 2* apostaficha 
+        a = fichas + apostaficha
+        print ("Voce acertou e agora está com {0}".format(a))
+    else:
+        b = fichas - apostaficha
+        print("Você perdeu e agora está com {0}".format(b))
+else:
+    if somabanco > somajogador:
+        print("O jogo acabou e o banco venceu")
+        if aposta == 'Banco':
+            apostaficha = apostaficha *1.95
+            a = fichas + apostaficha
+            print ("Voce acertou e agora está com {0}".format(a))
+        else:
+            b = fichas - apostaficha
+            print("Você perdeu e agora está com {0}".format(b))
+    if somajogador > somabanco:
+        print("O jogo acabou e o Jogador venceu")
+        if aposta == 'Jogador':
+            apostaficha= 2* apostaficha 
+            a = fichas + apostaficha
+            print ("Voce acertou e agora está com {0}".format(a))
+        else:
+            b = fichas - apostaficha
+            print("Você perdeu e agora está com {0}".format(b))
+
+
+        
        
