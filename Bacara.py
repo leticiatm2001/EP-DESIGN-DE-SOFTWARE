@@ -60,9 +60,9 @@ while fichas > 0:
         somabanco = somabanco - 10
 
 #Adição da terceira carta se necessário
-    if somajogador!=9 and somajogador!=8:
+    if somajogador!=9 and somajogador!=8 and somajogador!=6 and somajogador!=7:
         somajogador += carta3jogador
-    if somabanco!=9 and somabanco!=8:
+    if somabanco!=9 and somabanco!=8 and somabanco!=7 and somabanco!=8:
         somabanco += carta3banco    
 
 #Verificando a soma
