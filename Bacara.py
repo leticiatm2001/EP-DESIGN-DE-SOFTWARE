@@ -75,51 +75,8 @@ while fichas > 0:
     print("A soma do jogador foi {0}".format(somajogador))
     print("A soma do banco foi {0}".format(somabanco))
 
-#Empate
-    if somabanco==8 and somajogador==8:
-        print("A rodada acabou e empatou")
-        if aposta=='Empate':
-            apostaficha = 8* apostaficha
-            fichas = fichas + apostaficha
-            print ("Voce acertou e agora está com {0}".format(fichas))
-        else:
-            fichas = fichas - apostaficha
-            print("Você perdeu e agora está com {0}".format(fichas))    
-    
-    elif somabanco==9 and somajogador==9:
-        print("A rodada acabou e empatou")
-        if aposta=='Empate':
-            apostaficha = 8* apostaficha
-            fichas = fichas + apostaficha
-            print ("Voce acertou e agora está com {0}".format(fichas))
-        else:
-            fichas = fichas - apostaficha
-            print("Você perdeu e agora está com {0}".format(fichas)) 
-
-#Banco vence       
-    elif somabanco==8 or somabanco==9 and somajogador!=8 and somajogador!=9:
-        print("A rodada acabou e o banco venceu")
-        if aposta == 'Banco':
-            apostaficha = apostaficha *0.95
-            fichas = fichas + apostaficha
-            fichas = int
-            print ("Voce acertou e agora está com {0}".format(fichas))
-        else:
-            fichas = fichas - apostaficha
-            print("Você perdeu e agora está com {0}".format(fichas))
-        
-
-#Jogador vence
-    elif somajogador==8 or somajogador==9 and somabanco!=8 and somabanco!=9:
-        print("A rodada acabou e o Jogador venceu")
-        if aposta == 'Jogador':
-            apostaficha=  apostaficha 
-            fichas = fichas + apostaficha
-            print ("Voce acertou e agora está com {0}".format(fichas))
-        else:
-            fichas = fichas - apostaficha
-            print("Você perdeu e agora está com {0}".format(fichas))
-    else:
+#Verificação do resultado
+    if somabanco!= somajogador:
         if somabanco > somajogador:
             print("A rodada acabou e o banco venceu")
             if aposta == 'Banco':
